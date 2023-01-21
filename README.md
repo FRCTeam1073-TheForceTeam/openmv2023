@@ -16,9 +16,10 @@ Each detected object has four fields:
   - X Image Coordinate
   - Y Image Coordinate
   - Confidence - Floating point 0 to 1 confidence in the detection
-  
-  
-Example message:  "Cone, 100, 120, 0.5, Cube, 120, 150, 0.9, Cone, 90, 80, 1.0\n"
+  - Area - Area of the target in pixels for range estimation
+
+
+Example message:  "Cone, 100, 120, 0.5,100, Cube, 120, 150, 0.9, 200, Cone, 90, 80, 1.0, 101\n"
 
 This represents detection of 3 game pieces. Two cones, one cube at different location and confidence levels.
 

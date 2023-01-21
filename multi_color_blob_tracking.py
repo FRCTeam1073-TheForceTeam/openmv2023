@@ -24,12 +24,18 @@ uart.init(230400, bits=8, parity=None, stop=1)
 
 def send_targets(targets):
     output = ""
-    for i in range(len(targets)):
-        output.join("{type}, {imagex}, {imagey}, {confidence}".format(type = targets[i][0], imagex = targets[i][1], imagey = targets[i][2], confidence = targets[i][3]))
-        if i < len(targets) -1:
-            output.join(",")
+    num_to_send = len(targets);
+    if num_to_send > 10:
+        num_to_send = 10;
 
-    output.join("\n")
+    for i in range(num_to_send):
+        if i < len(targets) -1:
+            output += ("{type},{imagex},{imagey},{confidence},{area},".format(type = targets[i][0], imagex = targets[i][1], imagey = targets[i][2], confidence = targets[i][3], area=targets[i][4]))
+        else:
+            output += ("{type},{imagex},{imagey},{confidence},{area}".format(type = targets[i][0], imagex = targets[i][1], imagey = targets[i][2], confidence = targets[i][3], area=targets[i][4]))
+
+    output += "\n"
+    print(output)
     uart.write(output)
 
 while(True):
@@ -40,10 +46,11 @@ while(True):
         # These values depend on the blob not being circular - otherwise they will be shaky.
         img.draw_rectangle(blob.rect())
         if blob.code() == 1:
-            targets.append(["Cone", blob.cx(), blob.cy(), blob.density()])
+            targets.append(["Cone", blob.cx(), blob.cy(), blob.density(), blob.area()])
         else:
-            targets.append(["Cube", blob.cx(), blob.cy(), blob.density()])
+            targets.append(["Cube", blob.cx(), blob.cy(), blob.density(), blob.area()])
 
     send_targets(targets)
         # Note - the blob rotation is unique to 0-180 only
-    print(clock.fps())
+    # print(clock.fps())
+    #time.sleep_ms(200)
