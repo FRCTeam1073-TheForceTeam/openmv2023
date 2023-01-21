@@ -22,3 +22,10 @@ Example message:  "Cone, 100, 120, 0.5, Cube, 120, 150, 0.9, Cone, 90, 80, 1.0\n
 
 This represents detection of 3 game pieces. Two cones, one cube at different location and confidence levels.
 
+# Hardware Setup
+
+We are using OpenMV H7 and H7 R2 cameras and the FTDI-232R-DS_TTL cable to transmit TTL-level (3.3V) serial data.
+  - The OpenMV pintout is here: https://cdn.shopify.com/s/files/1/0803/9211/files/cam-v4-pinout_b4fbafcb-fd48-4a86-926d-85c75c845b77.png?v=1591573979
+  - The FTDI cable pintout is here: https://ftdichip.com/wp-content/uploads/2021/02/DS_TTL-232R_CABLES.pdf
+
+
