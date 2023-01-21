@@ -18,7 +18,7 @@ while(True):
     if (bytes != None and len(bytes) > 0):
         s = str(bytes,'UTF-8')
         print(s)
-        uart.write('Response!');
+        uart.write('Cone, 100, 200, 0.5, Cube, 150, 120, 0.8\n');
 
     time.sleep_ms(30);
     print(".");
