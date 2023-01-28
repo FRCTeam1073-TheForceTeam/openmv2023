@@ -72,8 +72,9 @@ while(True):
     for tag in img.find_apriltags(families=tag_families): # defaults to TAG36H11 without "families".
         img.draw_rectangle(tag.rect(), color = (255, 0, 0))
         img.draw_cross(tag.cx(), tag.cy(), color = (0, 255, 0))
-        print_args = (family_name(tag), tag.id(), (180 * tag.rotation()) / math.pi)
-        print("Tag Family %s, Tag ID %d, rotation %f (degrees)" % print_args)
+        targets.append(["Apriltag{id}".format(id = tag.id()), tag.cx(), tag.cy(), tag.goodness(), tag.w()*tag.h()])
+        #print_args = (family_name(tag), tag.id(), (180 * tag.rotation()) / math.pi)
+        #print("Tag Family %s, Tag ID %d, rotation %f (degrees)" % print_args)
 
     send_targets(targets)
 
