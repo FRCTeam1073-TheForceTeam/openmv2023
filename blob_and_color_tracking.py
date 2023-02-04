@@ -7,15 +7,15 @@ from pyb import UART
 
 # Color Tracking Thresholds (L Min, L Max, A Min, A Max, B Min, B Max)
 # The below thresholds track in general red/green things. You may wish to tune them...
-thresholds = [(30, 100, 0, 25, 30, 60), #Cone_thresholds
-              (15, 60, 10,30, -45, -10)] #Cube_thresholds
+thresholds = [(65, 80, 0, 20, 60, 75), #Cone_thresholds
+              (15, 50, 27, 60, -85, -40)] #Cube_thresholds
 # You may pass up to 16 thresholds above. However, it's not really possible to segment any
 # scene with 16 thresholds before color thresholds start to overlap heavily.
 #(15, 60, 20,40, -65, -40)
 
 sensor.reset()
 sensor.set_pixformat(sensor.RGB565)
-sensor.set_framesize(sensor.QVGA)
+sensor.set_framesize(sensor.QQVGA)
 sensor.skip_frames(time = 2000)
 sensor.set_auto_gain(False) # must be turned off for color tracking
 sensor.set_auto_whitebal(False) # must be turned off for color tracking
